@@ -199,7 +199,7 @@ agri-knowledge/
 ├─ taxa.csv  names.csv       # taxonomic backbone and multilingual names
 ├─ facts/<taxon_id>.csv      # one file per taxon: wildcard facts and country-scoped facts
 ├─ hazards.csv  sources.csv  datasets.csv
-├─ advisories.csv            # header only until the engine loader supports advisories
+├─ advisories.csv            # not used; the engine rejects non-whitespace content until M8
 ├─ pipelines/
 │  ├─ importers/<name>/      # manifest.toml, fetch, transform, AUDIT.md
 │  ├─ seed/                  # working spreadsheet → draft fact rows (spreadsheets are not committed)
@@ -335,7 +335,7 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 - **Honest labeling.** Until independent experts exist, nothing is `approved` and releases are labelled reviewed-only.
 - **Freshness.** The initial policy flags facts last reviewed more than 24 months ago for re-review.
 - **Ownership.** CODEOWNERS starts as the maintainer and is generated per group once real reviewers exist. Country ownership cannot be path-based, because scope lives inside rows, so CI labels pull requests `country:XX` and asks the country steward to approve (from K4).
-- **Corrections.** Ordinary corrections ship as PATCH releases. Safety-critical corrections ship immediately, with a GitHub Security Advisory and a CHANGELOG entry. `advisories.csv` stays header-only until the engine loader supports advisories.
+- **Corrections.** Ordinary corrections ship as PATCH releases. Safety-critical corrections ship immediately, with a GitHub Security Advisory and a CHANGELOG entry. `advisories.csv` is not used until the engine loader supports advisories: the engine rejects any non-whitespace content in it, even a header row.
 - **Decisions.** Policy decisions (license allowlist, tier rules) are ADRs in the engine. Technical decisions for this repository are ADRs in [`docs/decisions/`](docs/decisions/).
 
 ## Releases and versioning
