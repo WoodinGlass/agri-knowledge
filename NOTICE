@@ -1,0 +1,15 @@
+agri-knowledge
+Copyright 2026 WoodinGlass and the agri-knowledge contributors
+
+This distribution contains two categories of content:
+
+1. Code, pipelines, tests, workflows and documentation
+   Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+2. Data: the pack tables and the built pack
+   Licensed under Creative Commons Attribution 4.0 International
+   (CC BY 4.0) (see LICENSE-DATA).
+
+Third-party sources behind the data keep their own licenses; all are on
+the project's license allowlist and are credited in ATTRIBUTION.md and
+sources.csv.
