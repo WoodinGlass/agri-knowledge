@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install engine
+        run: pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.2"
+      - name: Validate (strict)
+        run: agri-core validate --pack . --strict
+      - name: Lint sources
+        run: agri-core lint-sources --pack .
+      - name: Pack lock no-diff
+        run: |
+          agri-core pack lock --pack .
+          git diff --exit-code pack.toml
+      - name: Pack build twice (reproducible)
+        run: |
+          agri-core pack build --pack . --out /tmp/build1
+          agri-core pack build --pack . --out /tmp/build2
+          diff <(sha256sum /tmp/build1/pack.sqlite | awk '{print $1}') \
+               <(sha256sum /tmp/build2/pack.sqlite | awk '{print $1}')
