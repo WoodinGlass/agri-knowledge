@@ -51,7 +51,7 @@ Adding a taxon, a name or a country is a data change here, not a code change in 
 
 ## What this is not
 
-- **Not an engine.** Schemas, the parameter dictionary, the validator, the calculators and the exports live in `agri-agronomy-core`. The pipelines here contain no agronomic logic.
+- **Not an engine.** Schemas, the parameter dictionary, the climate parameter catalog, the validator, the calculators and the exports live in `agri-agronomy-core`. The pipelines here contain no agronomic logic.
 - **Not agronomic advice, a crop recommender or a diagnostic tool.** It is reference data with visible provenance.
 - **Not a pesticide or dose database.** Such questions return `refer_to_label` or `refer_to_authority` in the engine.
 - **Not a mirror of third-party datasets.** Raw third-party data is never committed; only manifests, checksums and scripts are.
@@ -73,7 +73,7 @@ open sources ──► importers / seed scripts ──► facts: imported → dr
 
 | | `agri-agronomy-core` (engine) | `agri-knowledge` (this repository) |
 |---|---|---|
-| Owns | The contract: JSON Schemas, parameter dictionary, pack format, resolution policy. The validator and license gate. The calculators and exports. | Taxa, names, facts, hazard and legal flags, source records, reference datasets, importers, review records and built packs. |
+| Owns | The contract: JSON Schemas, parameter dictionary, climate parameter catalog, pack format, resolution policy. The validator and license gate. The calculators and exports. | Taxa, names, facts, hazard and legal flags, source records, reference datasets, importers, review records and built packs. |
 | Changes through | An engine release (code or dictionary). | A pack release (data only). |
 | License | Apache-2.0 | Data CC BY 4.0; tooling and documentation Apache-2.0 |
 
@@ -95,7 +95,7 @@ open sources ──► importers / seed scripts ──► facts: imported → dr
 
 ## Coverage
 
-Nothing ships yet. This is the plan for the first release and beyond, and it is updated as milestones complete.
+Nothing ships yet. This is the plan for the first release and beyond, and it is updated as milestones complete. On the engine side, **M10 (climate parameter catalog)** has shipped: the catalog defines the parameters the engine will use from M11 onward (`computed`, `input`, `pack_value` kinds) and the excluded set of parameters that are out of scope for safety or legal reasons. This repository supplies the `pack_value` rows (base and upper temperatures for GDD, threshold trapezoids, stage lengths) in **K6**, once engine M12–M13 land.
 
 | Group | Target at `v0.1.0` | Notes |
 |---|---|---|
