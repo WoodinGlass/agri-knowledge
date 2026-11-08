@@ -199,7 +199,7 @@ agri-knowledge/
 ├─ taxa.csv  names.csv       # taxonomic backbone and multilingual names
 ├─ facts/<taxon_id>.csv      # one file per taxon: wildcard facts and country-scoped facts
 ├─ hazards.csv  sources.csv  datasets.csv
-├─ advisories.csv            # not used; the engine rejects non-whitespace content until M8
+├─ advisories.csv            # not used; the engine rejects non-whitespace content until advisory loading ships (ADR-004 §G3)
 ├─ pipelines/
 │  ├─ importers/<name>/      # manifest.toml, fetch, transform, AUDIT.md
 │  ├─ seed/                  # working spreadsheet → draft fact rows (spreadsheets are not committed)
@@ -335,7 +335,7 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 - **Honest labeling.** Until independent experts exist, nothing is `approved` and releases are labelled reviewed-only.
 - **Freshness.** The initial policy flags facts last reviewed more than 24 months ago for re-review.
 - **Ownership.** CODEOWNERS starts as the maintainer and is generated per group once real reviewers exist. Country ownership cannot be path-based, because scope lives inside rows, so CI labels pull requests `country:XX` and asks the country steward to approve (from K4).
-- **Corrections.** Ordinary corrections ship as PATCH releases. Safety-critical corrections ship immediately, with a GitHub Security Advisory and a CHANGELOG entry. `advisories.csv` is not used until the engine loader supports advisories: the engine rejects any non-whitespace content in it, even a header row.
+- **Corrections.** Ordinary corrections ship as PATCH releases. Safety-critical corrections ship immediately, with a GitHub Security Advisory and a CHANGELOG entry. `advisories.csv` is not used until the engine loader supports advisories (ADR-004 §G3): the engine rejects any non-whitespace content in it, even a header row.
 - **Decisions.** Policy decisions (license allowlist, tier rules) are ADRs in the engine. Technical decisions for this repository are ADRs in [`docs/decisions/`](docs/decisions/).
 
 ## Releases and versioning
@@ -359,13 +359,14 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 | Milestone | Status | Scope | Done when |
 |---|---|---|---|
 | **K0** Foundation | In progress | Repository, licenses and `NOTICE`, README, SECURITY and CONTRIBUTING, initial CODEOWNERS, pre-commit, full CI (see [Quality gates](#quality-gates)), valid empty pack, ADR-001 (layout and versioning), source-feasibility audit skeleton. | CI is green; `agri-core validate --strict` exits 0; two builds are byte-identical; the empty pack loads with the pinned engine tag and with engine `main`. |
-| **K1** Seed: tomato and rice (Indonesia) | Not started | Facts seeded from a working spreadsheet with allowlisted sources, then maintainer review. | Both taxa reach T2 `reviewed`; every source passes the license gate; the report shows the share of parameters with a value versus `unknown`; parameters used by engine calculators (M10 to M12) are prioritized and reported. |
+| **K1** Seed: tomato and rice (Indonesia) | Not started | Facts seeded from a working spreadsheet with allowlisted sources, then maintainer review. | Both taxa reach T2 `reviewed`; every source passes the license gate; the report shows the share of parameters with a value versus `unknown`; parameters used by engine calculators (M11 to M15) are prioritized and reported. |
 | **K2** Backbone and names | Not started | T0 for the priority list (wishlist plus core commodities), multilingual names, protected-species screening. | `resolve_taxon` returns `ok` for 100% of the priority list by Indonesian and English name; every `ambiguous` result is intentional and recorded; no protected taxon without a lawful pathway. |
 | **K3** First importer and license gate | Not started | First fact importer (T1 `imported`), sample audit, generated `ATTRIBUTION.md` and manifest. | A second run is identical; the audit meets the criteria above; the importer rejects licenses outside the allowlist (tested). |
 | **K4** Two countries and flags | Not started | A second country, and `hazards.csv` with legal flags that cite legal instruments (public-domain basis), with examples that return `refer_to_authority`. | A tomato scenario gives correct, different results across the two countries with no borrowed values; every flag cites its instrument. |
 | **K5** Expert review program and coverage report | Not started | Recruit experts, document the review process and its evidence, publish a coverage report per group and country. | The process is documented and exercised on at least one non-safety fact (one expert) and one safety-critical fact (two experts). If experts are unavailable, the release is labelled reviewed-only. |
-| **`v0.1.0`** | Not started | All gates green; tomato and rice at T2 `reviewed` for Indonesia and one more country; T0 backbone; importer #1; legal flags; coverage report. | Tagged, and pinned by the engine's M11 tests. |
-| **K6+** | Not started | One group per iteration: fruit, then fodder, then ornamentals, then rare plants. | Each iteration: source audit, seed or importer, review, MINOR release. |
+| **`v0.1.0`** | Not started | All gates green; tomato and rice at T2 `reviewed` for Indonesia and one more country; T0 backbone; importer #1; legal flags; coverage report. | Tagged, and pinned by the engine's M14 tests. |
+| **K6** | Not started | Climate and stage values for tomato and rice: source audit (issue #4), thermal-time (GDD base/upper, phase thermal time), threshold trapezoids, phase durations; needs engine M12–M13. | Each value cites an allowlisted source; thermal-time, threshold and stage values reviewed; MINOR release tagged. |
+| **K7+** | Not started | One group per iteration: fruit, then fodder, then ornamentals, then rare plants. | Each iteration: source audit, seed or importer, review, MINOR release. |
 
 ## Using the data responsibly
 
