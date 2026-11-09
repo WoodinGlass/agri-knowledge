@@ -96,7 +96,7 @@ open sources ──► importers / seed scripts ──► facts: imported → dr
 
 ## Coverage
 
-Nothing ships yet. This is the plan for the first release and beyond, and it is updated as milestones complete. On the engine side, **M10 (climate parameter catalog)** is done, and the calculators that consume it — **M11 (atmosphere, radiation, ET0)**, **M12 (thermal time and climate indices)**, **M13 (thresholds and stages)** and **M14 (irrigation, fertilizer, media, water)** — are done too. Together they define:
+Nothing ships yet. This is the plan for the sequence of milestone tags, and it is updated as milestones complete. On the engine side, **M10 (climate parameter catalog)** is done, and the calculators that consume it — **M11 (atmosphere, radiation, ET0)**, **M12 (thermal time and climate indices)**, **M13 (thresholds and stages)** and **M14 (irrigation, fertilizer, media, water)** — are done too. Together they define:
 
 - The `pack_value` rows that K1–K6 will seed: GDD base and upper temperatures (`gdd_base`, `gdd_upper`), phase durations (`phase_duration`), phase thermal time (`phase_thermal_time`), and threshold trapezoids (for example `soil_ph` and `air_temp_day`).
 - The irrigation, fertilizer, media and water-quality parameters that M14 consumes: Kc per phase, `kc_stage_length`, `depletion_fraction`, `moisture_band`, `must_flood_phases`, `awd_reflood_depth`, `water_ec_max`, `water_temp_max`, N/P2O5/K2O fertilizer rates and per-application dose caps.
