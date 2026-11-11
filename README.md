@@ -8,7 +8,7 @@ Every value has a source, a scope, an evidence grade and a review status. Where 
   <img src="https://img.shields.io/badge/status-pre--release-orange" alt="Status">
   <img src="https://img.shields.io/badge/data-CC%20BY%204.0-blue" alt="Data license: CC BY 4.0">
   <img src="https://img.shields.io/badge/code-Apache--2.0-blue" alt="Code license: Apache-2.0">
-  <img src="https://img.shields.io/badge/engine-agri--agronomy--core%20%E2%89%A5%20v0.1.2-blue" alt="Engine: agri-agronomy-core v0.1.2 or newer">
+  <img src="https://img.shields.io/badge/engine-agri--agronomy--core%20%E2%89%A5%20v0.1.4-blue" alt="Engine: agri-agronomy-core v0.1.4 or newer">
   <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen" alt="pre-commit">
   <img src="https://img.shields.io/github/last-commit/WoodinGlass/agri-knowledge" alt="Last commit">
 </p>
@@ -21,14 +21,14 @@ Every value has a source, a scope, an evidence grade and a review status. Where 
   <a href="https://github.com/WoodinGlass/agri-agronomy-core">The engine</a>
 </p>
 
-> **Pre-release (milestone K0).** There is no tagged release yet and no data is shipped. Each milestone ships its own tag: K0 → `v0.1.0`, K1 → `v0.1.1`, K2 → `v0.1.2`, K3 → `v0.1.3`, K4 → `v0.1.4`, K5 → `v0.1.5`, K6 → `v0.1.6`, and each further group of data carries its own incremental tag (`v0.1.7`, `v0.1.8`, …). Every tag is a valid, reproducible pack the engine can load; there is no separate "mature" or "full release" tag concept. Until K0 completes and `v0.1.0` is tagged, expect an empty or very small pack and breaking changes. **The engine side is ready:** `agri-core` milestones M10 (climate catalog), M11 (atmosphere, radiation, ET0), M12 (thermal time and climate indices), M13 (thresholds and stages) and M14 (irrigation, fertilizer, media, water) are on `main` in the `v0.1.3` engine batch, so K6 (climate and stage values) can begin, and the M14 irrigation, fertilizer and water-quality parameters that K1 will prioritize for seeding now have an engine that consumes them. This is reference data, not professional agronomic advice. Read [Read this first](#read-this-first) and [Using the data responsibly](#using-the-data-responsibly) before relying on any value.
+> **Pre-release (milestone K0).** There is no tagged release yet and no data is shipped. Each milestone ships its own tag: K0 → `v0.1.0`, K1 → `v0.1.1`, K2 → `v0.1.2`, K3 → `v0.1.3`, K4 → `v0.1.4`, K5 → `v0.1.5`, K6 → `v0.1.6`, and each further group of data carries its own incremental tag (`v0.1.7`, `v0.1.8`, …). Every tag is a valid, reproducible pack the engine can load; there is no separate "mature" or "full release" tag concept. Until K0 completes and `v0.1.0` is tagged, expect an empty or very small pack and breaking changes. **The engine side is ready:** `agri-core` milestones M10 (climate catalog), M11 (atmosphere, radiation, ET0), M12 (thermal time and climate indices), M13 (thresholds and stages), M14 (irrigation, fertilizer, media, water) and M15 (suitability and propagation) are on `main` in the `v0.1.4` engine batch, so K6 (climate and stage values) can begin, and the M14 irrigation, fertilizer and water-quality parameters that K1 will prioritize for seeding now have an engine that consumes them. This is reference data, not professional agronomic advice. Read [Read this first](#read-this-first) and [Using the data responsibly](#using-the-data-responsibly) before relying on any value.
 
 ## Read this first
 
 Honesty is a feature of this project. Before you build on it:
 
 - **It is young.** The first milestones build the foundation, not coverage. See [Milestones](#milestones).
-- **The engine is ready.** `agri-core` M10–M14 (climate catalog, atmosphere/radiation/ET0, thermal time and climate indices, thresholds and stages, irrigation/fertilizer/media/water) are on `main` in the `v0.1.3` engine batch. The `pack_value` rows, threshold trapezoids and irrigation, fertilizer and water-quality values that K1–K6 will seed can be validated against the engine today.
+- **The engine is ready.** `agri-core` M10–M15 (climate catalog, atmosphere/radiation/ET0, thermal time and climate indices, thresholds and stages, irrigation/fertilizer/media/water, suitability and propagation) are on `main` in the `v0.1.4` engine batch. The `pack_value` rows, threshold trapezoids and irrigation, fertilizer and water-quality values that K1–K6 will seed can be validated against the engine today.
 - **It is small on purpose.** The first profiles are tomato and rice, starting with Indonesia. More groups follow one at a time.
 - **It has gaps by design.** Only sources whose licenses allow commercial reuse are accepted. That rules out most paywalled journal articles, so many values will be `unknown` until open sources or expert contributions exist.
 - **No expert has approved anything yet.** One person maintains the repository today. Until independent domain experts review facts, nothing is `approved`, and releases carry the label *reviewed-only: for pilots with human oversight*.
@@ -131,10 +131,10 @@ sha256sum --check --ignore-missing SHA256SUMS
 tar -xzf agri-knowledge-$VERSION.tar.gz
 ```
 
-Install the engine (v0.1.2 or newer; v0.1.3 is the current `main` batch that carries M14) and load the pack explicitly:
+Install the engine (v0.1.4 or newer; v0.1.4 is the current release and carries M15) and load the pack explicitly:
 
 ```bash
-pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.2"
+pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.4"
 ```
 
 ```python
@@ -167,7 +167,7 @@ The engine's [resolution policy](https://github.com/WoodinGlass/agri-agronomy-co
 Install the engine in any Colab cell, then load the unpacked release as above:
 
 ```python
-!pip install -q "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.2"
+!pip install -q "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.4"
 ```
 
 No API key or GPU is needed.
@@ -380,12 +380,12 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 | Milestone | Tag | Status | Scope | Done when |
 |---|---|---|---|---|
 | **K0** Foundation | `v0.1.0` | In progress | Repository, licenses and `NOTICE`, README, SECURITY and CONTRIBUTING, initial CODEOWNERS, pre-commit, full CI (see [Quality gates](#quality-gates)), valid empty pack, ADR-001 (layout and versioning), source-feasibility audit skeleton. | CI is green; `agri-core validate --strict` exits 0; two builds are byte-identical; the empty pack loads with the pinned engine tag and with engine `main`; `v0.1.0` tagged. |
-| **K1** Seed: tomato and rice (Indonesia) | `v0.1.1` | Not started | Facts seeded from a working spreadsheet with allowlisted sources, then maintainer review. | Both taxa reach T2 `reviewed`; every source passes the license gate; the report shows the share of parameters with a value versus `unknown`; parameters used by engine calculators (M11 to M14 shipped; M15 upcoming) are prioritized and reported; `v0.1.1` tagged. |
+| **K1** Seed: tomato and rice (Indonesia) | `v0.1.1` | Not started | Facts seeded from a working spreadsheet with allowlisted sources, then maintainer review. | Both taxa reach T2 `reviewed`; every source passes the license gate; the report shows the share of parameters with a value versus `unknown`; parameters used by engine calculators (M11 to M15 shipped) are prioritized and reported; `v0.1.1` tagged. |
 | **K2** Backbone and names | `v0.1.2` | Not started | T0 for the priority list (wishlist plus core commodities), multilingual names, protected-species screening. | `resolve_taxon` returns `ok` for 100% of the priority list by Indonesian and English name; every `ambiguous` result is intentional and recorded; no protected taxon without a lawful pathway; `v0.1.2` tagged. |
 | **K3** First importer and license gate | `v0.1.3` | Not started | First fact importer (T1 `imported`), sample audit, generated `ATTRIBUTION.md` and manifest. | A second run is identical; the audit meets the criteria above; the importer rejects licenses outside the allowlist (tested); `v0.1.3` tagged. |
 | **K4** Two countries and flags | `v0.1.4` | Not started | A second country, and `hazards.csv` with legal flags that cite legal instruments (public-domain basis), with examples that return `refer_to_authority`. | A tomato scenario gives correct, different results across the two countries with no borrowed values; every flag cites its instrument; `v0.1.4` tagged. |
 | **K5** Expert review program and first full pack | `v0.1.5` | Not started | Recruit experts, document the review process and its evidence, publish a coverage report per group and country. Alongside K1–K4, assemble the first full pack: tomato and rice at T2 `reviewed` for Indonesia and one more country; T0 backbone; importer #1; legal flags; coverage report. | The process is documented and exercised on at least one non-safety fact (one expert) and one safety-critical fact (two experts). If experts are unavailable, the release is labelled reviewed-only. Every gate green; tomato and rice at T2 `reviewed`; T0 backbone in place; importer #1 runs; legal flags cite their instruments; coverage report attached; `v0.1.5` tagged. |
-| **K6** Climate and stage values | `v0.1.6` | Not started | Climate and stage values for tomato and rice: source audit (issue #4), thermal-time (GDD base/upper, phase thermal time), threshold trapezoids, phase durations. Engine M12–M14 on `main` (v0.1.3 batch); ready to start. | Each value cites an allowlisted source; thermal-time, threshold and stage values reviewed; `v0.1.6` tagged. |
+| **K6** Climate and stage values | `v0.1.6` | Not started | Climate and stage values for tomato and rice: source audit (issue #4), thermal-time (GDD base/upper, phase thermal time), threshold trapezoids, phase durations. Engine M12–M15 on `main` (v0.1.4 batch); ready to start. | Each value cites an allowlisted source; thermal-time, threshold and stage values reviewed; `v0.1.6` tagged. |
 | **K7+** Additional groups | `v0.1.7`+ | Not started | One group per iteration: fruit, then fodder, then ornamentals, then rare plants. | Each iteration: source audit, seed or importer, review, incremental tag (`v0.1.7`, `v0.1.8`, …). |
 
 ## Using the data responsibly
