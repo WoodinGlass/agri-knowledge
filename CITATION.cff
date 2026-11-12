@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use agri-knowledge, please cite this repository with the release tag you used. If you rely on specific facts, please also cite the original sources listed in sources.csv."
+title: "agri-knowledge"
+type: dataset
+authors:
+  - name: "WoodinGlass"
+repository-code: "https://github.com/WoodinGlass/agri-knowledge"
+license: "CC-BY-4.0"

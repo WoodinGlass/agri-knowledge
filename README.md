@@ -313,7 +313,7 @@ Rules:
 - A taxon listed in the Appendices to CITES (any appendix) or protected under a national regulation such as Permen LHK 106/2018 (Indonesia) is not included unless a documented lawful cultivation pathway exists.
 - Acceptable pathways include artificial propagation explicitly exempted by the instrument, or data on commercially cultivated varieties rather than wild-type material. Wild-collected material is not accepted.
 - Decisions cite legal instruments. Conservation status from restricted databases, for example the IUCN Red List, is not used as an input. Maintainers may still decline a taxon on conservation grounds, and the reasoning is recorded without importing restricted data.
-- This is a design choice, not a legal opinion. Verify CITES and national rules for each species and jurisdiction. Details are in [`docs/PROTECTED_SPECIES.md`](docs/PROTECTED_SPECIES.md) and the engine's [protected-species policy](https://github.com/WoodinGlass/agri-agronomy-core#protected-species).
+- This is a design choice, not a legal opinion. Verify CITES and national rules for each species and jurisdiction. Details are in `docs/PROTECTED_SPECIES.md` (planned, K0) and the engine's [protected-species policy](https://github.com/WoodinGlass/agri-agronomy-core#protected-species).
 
 ## Quality gates
 
@@ -333,7 +333,7 @@ These gates are built in milestone K0. Until K0 is done, the repository ships no
 
 ## Governance and review
 
-The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
+The full rules are in `docs/GOVERNANCE.md` (planned, K0). In short:
 
 - **Roles.** Maintainer (merges, sets `reviewed`), domain reviewer (sets `approved`) and, from K4, country steward (local sources, names, legal flags). Roles may overlap early on, with one exception: nobody approves their own facts.
 - **Approval.** `approved` needs at least one domain expert. Safety-critical facts need at least two independent experts: different people, and different institutions where possible.
@@ -343,7 +343,7 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 - **Freshness.** The initial policy flags facts last reviewed more than 24 months ago for re-review.
 - **Ownership.** CODEOWNERS starts as the maintainer and is generated per group once real reviewers exist. Country ownership cannot be path-based, because scope lives inside rows, so CI labels pull requests `country:XX` and asks the country steward to approve (from K4).
 - **Corrections.** Ordinary corrections ship as PATCH releases. Safety-critical corrections ship immediately, with a GitHub Security Advisory and a CHANGELOG entry. `advisories.csv` is not used until the engine loader supports advisories (ADR-004 §G3): the engine rejects any non-whitespace content in it, even a header row.
-- **Decisions.** Policy decisions (license allowlist, tier rules) are ADRs in the engine. Technical decisions for this repository are ADRs in [`docs/decisions/`](docs/decisions/).
+- **Decisions.** Policy decisions (license allowlist, tier rules) are ADRs in the engine. Technical decisions for this repository are ADRs in `docs/decisions/` (planned, K0).
 
 ## Releases and versioning
 
@@ -402,7 +402,7 @@ The full rules are in [`docs/GOVERNANCE.md`](docs/GOVERNANCE.md). In short:
 - **Why is so much `unknown`?** Because a value needs a source we can cite and reuse commercially, and a reviewer who checked it. A confident-looking guess would be worse than a gap.
 - **Why not import a well-known crop database?** Provenance, scope and license. Bulk imports without a compatible license are not accepted; imports from open datasets go through the [importer process](#importers).
 - **Can I use this commercially?** Yes, under CC BY 4.0 with attribution, and every source in the pack is on the allowlist. This is not legal advice.
-- **Can I add my country?** Yes. Start with [`docs/COUNTRY_ONBOARDING.md`](docs/COUNTRY_ONBOARDING.md). Countries are added as scoped facts and reviewed by a steward.
+- **Can I add my country?** Yes. Start with `docs/COUNTRY_ONBOARDING.md` (planned, K0). Countries are added as scoped facts and reviewed by a steward.
 
 ## Contributing
 
