@@ -1,0 +1,7 @@
+taxon_name,rank,status,legal_basis,notes
+nepenthes,genus,deny,"CITES Appendix I (N. rajah, N. khasiana) and Appendix II; Permen LHK 106/2018","Tropical pitcher plants; no artificial propagation exemption for living plants"
+cycas,genus,deny,"CITES Appendix II; Permen LHK 106/2018","Cycads; no documented commercial cultivation pathway"
+cyathea,genus,deny,"Permen LHK 106/2018 (some species)","Tree ferns; verify per species before considering"
+orchidaceae,family,deny,"CITES Appendix I/II; Permen LHK 106/2018 for many genera","Orchids; more specific genus entries override this family entry"
+dionaea,genus,deny,"CITES Appendix II","Venus flytrap; no artificial propagation exemption documented"
+vanilla,genus,deferred,"CITES Appendix II (Orchidaceae), with explicit exemption for artificially propagated pods and seeds; not in Permen LHK 106/2018","Deferred 2026-11-12; overrides orchidaceae deny for this genus"
