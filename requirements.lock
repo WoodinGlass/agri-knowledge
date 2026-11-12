@@ -1,0 +1,3 @@
+# K0 placeholder. No pinned dependencies yet.
+# Install the engine from a pinned tag for local work:
+#   pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.4"
