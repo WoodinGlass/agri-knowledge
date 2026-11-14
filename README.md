@@ -134,7 +134,7 @@ tar -xzf agri-knowledge-$VERSION.tar.gz
 Install the engine (v0.1.4 or newer; v0.1.4 is the current release and carries M15) and load the pack explicitly:
 
 ```bash
-pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.4"
+pip install "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.6"
 ```
 
 ```python
@@ -167,7 +167,7 @@ The engine's [resolution policy](https://github.com/WoodinGlass/agri-agronomy-co
 Install the engine in any Colab cell, then load the unpacked release as above:
 
 ```python
-!pip install -q "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.4"
+!pip install -q "git+https://github.com/WoodinGlass/agri-agronomy-core@v0.1.6"
 ```
 
 No API key or GPU is needed.
@@ -385,7 +385,7 @@ The full rules are in `docs/GOVERNANCE.md` (planned, K0). In short:
 | **K3** First importer and license gate | `v0.1.3` | Not started | First fact importer (T1 `imported`), sample audit, generated `ATTRIBUTION.md` and manifest. | A second run is identical; the audit meets the criteria above; the importer rejects licenses outside the allowlist (tested); `v0.1.3` tagged. |
 | **K4** Two countries and flags | `v0.1.4` | Not started | A second country, and `hazards.csv` with legal flags that cite legal instruments (public-domain basis), with examples that return `refer_to_authority`. | A tomato scenario gives correct, different results across the two countries with no borrowed values; every flag cites its instrument; `v0.1.4` tagged. |
 | **K5** Expert review program and first full pack | `v0.1.5` | Not started | Recruit experts, document the review process and its evidence, publish a coverage report per group and country. Alongside K1–K4, assemble the first full pack: tomato and rice at T2 `reviewed` for Indonesia and one more country; T0 backbone; importer #1; legal flags; coverage report. | The process is documented and exercised on at least one non-safety fact (one expert) and one safety-critical fact (two experts). If experts are unavailable, the release is labelled reviewed-only. Every gate green; tomato and rice at T2 `reviewed`; T0 backbone in place; importer #1 runs; legal flags cite their instruments; coverage report attached; `v0.1.5` tagged. |
-| **K6** Climate and stage values | `v0.1.6` | Not started | Climate and stage values for tomato and rice: source audit (issue #4), thermal-time (GDD base/upper, phase thermal time), threshold trapezoids, phase durations. Engine M12–M15 on `main` (v0.1.4 batch); ready to start. | Each value cites an allowlisted source; thermal-time, threshold and stage values reviewed; `v0.1.6` tagged. |
+| **K6** Climate and stage values | `v0.1.6` | Not started | Climate and stage values for tomato and rice: source audit (issue #4), thermal-time (GDD base/upper, phase thermal time), threshold trapezoids, phase durations. Engine M12–M16 on `main` (`v0.1.4`–`v0.1.6` batch); ready to start. | Each value cites an allowlisted source; thermal-time, threshold and stage values reviewed; `v0.1.6` tagged. |
 | **K7+** Additional groups | `v0.1.7`+ | Not started | One group per iteration: fruit, then fodder, then ornamentals, then rare plants. | Each iteration: source audit, seed or importer, review, incremental tag (`v0.1.7`, `v0.1.8`, …). |
 
 ## Using the data responsibly
